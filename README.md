@@ -239,6 +239,40 @@ Operasional dan laporan harian tim Surprice.
     </div>
     <div id="gudang-list"></div>
   </div>
+<script>
+  // Ambil data tersimpan (kalau ada)
+  let laporanCS = JSON.parse(localStorage.getItem("laporan Gudang")) || [];
+
+  function addSpreadsheet(div) {
+    const name = document.getElementById(`${div}-name`).value.trim();
+    const url = document.getElementById(`${div}-url`).value.trim();
+
+    if (!name || !url) {
+      alert("Isi dulu nama dan link Google Spreadsheet-nya ya!");
+      return;
+    }
+
+    laporanCS.push({ name, url });
+    localStorage.setItem("laporanCS", JSON.stringify(laporanCS));
+
+    showCSList();
+    document.getElementById(`${div}-name`).value = "";
+    document.getElementById(`${div}-url`).value = "";
+  }
+
+  function showCSList() {
+    const list = document.getElementById("cs-list");
+    list.innerHTML = "";
+    laporanCS.forEach(item => {
+      const divItem = document.createElement("div");
+      divItem.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
+      list.appendChild(divItem);
+    });
+  }
+
+  // Saat halaman dibuka, tampilkan data lama
+  showCSList();
+</script>
 
   <a href="#" onclick="showSection('finance'); setActiveLink(this);">Finance</a>
   <div id="finance" class="section">
@@ -250,6 +284,40 @@ Operasional dan laporan harian tim Surprice.
     </div>
     <div id="finance-list"></div>
   </div>
+<script>
+  // Ambil data tersimpan (kalau ada)
+  let laporanCS = JSON.parse(localStorage.getItem("laporanCS")) || [];
+
+  function addSpreadsheet(div) {
+    const name = document.getElementById(`${div}-name`).value.trim();
+    const url = document.getElementById(`${div}-url`).value.trim();
+
+    if (!name || !url) {
+      alert("Isi dulu nama dan link Google Spreadsheet-nya ya!");
+      return;
+    }
+
+    laporanCS.push({ name, url });
+    localStorage.setItem("laporan Finance", JSON.stringify(laporanCS));
+
+    showCSList();
+    document.getElementById(`${div}-name`).value = "";
+    document.getElementById(`${div}-url`).value = "";
+  }
+
+  function showCSList() {
+    const list = document.getElementById("cs-list");
+    list.innerHTML = "";
+    laporanCS.forEach(item => {
+      const divItem = document.createElement("div");
+      divItem.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
+      list.appendChild(divItem);
+    });
+  }
+
+  // Saat halaman dibuka, tampilkan data lama
+  showCSList();
+</script>
 
   <a href="#" onclick="showSection('marketing'); setActiveLink(this);">Marketing</a>
   <div id="marketing" class="section">
@@ -261,6 +329,40 @@ Operasional dan laporan harian tim Surprice.
     </div>
     <div id="marketing-list"></div>
   </div>
+<script>
+  // Ambil data tersimpan (kalau ada)
+  let laporanCS = JSON.parse(localStorage.getItem("laporanCS")) || [];
+
+  function addSpreadsheet(div) {
+    const name = document.getElementById(`${div}-name`).value.trim();
+    const url = document.getElementById(`${div}-url`).value.trim();
+
+    if (!name || !url) {
+      alert("Isi dulu nama dan link Google Spreadsheet-nya ya!");
+      return;
+    }
+
+    laporanCS.push({ name, url });
+    localStorage.setItem("laporan Marketing", JSON.stringify(laporan Marketing"));
+
+    showCSList();
+    document.getElementById(`${div}-name`).value = "";
+    document.getElementById(`${div}-url`).value = "";
+  }
+
+  function showCSList() {
+    const list = document.getElementById("cs-list");
+    list.innerHTML = "";
+    laporanCS.forEach(item => {
+      const divItem = document.createElement("div");
+      divItem.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
+      list.appendChild(divItem);
+    });
+  }
+
+  // Saat halaman dibuka, tampilkan data lama
+  showCSList();
+</script>
 
   <a href="#" onclick="showSection('admin'); setActiveLink(this);">Admin</a>
   <div id="admin" class="section">
@@ -272,6 +374,40 @@ Operasional dan laporan harian tim Surprice.
     </div>
     <div id="admin-list"></div>
   </div>
+<script>
+  // Ambil data tersimpan (kalau ada)
+  let laporanCS = JSON.parse(localStorage.getItem("laporanCS")) || [];
+
+  function addSpreadsheet(div) {
+    const name = document.getElementById(`${div}-name`).value.trim();
+    const url = document.getElementById(`${div}-url`).value.trim();
+
+    if (!name || !url) {
+      alert("Isi dulu nama dan link Google Spreadsheet-nya ya!");
+      return;
+    }
+
+    laporanCS.push({ name, url });
+    localStorage.setItem("laporan Admin", JSON.stringify(laporan Admin));
+
+    showCSList();
+    document.getElementById(`${div}-name`).value = "";
+    document.getElementById(`${div}-url`).value = "";
+  }
+
+  function showCSList() {
+    const list = document.getElementById("cs-list");
+    list.innerHTML = "";
+    laporanCS.forEach(item => {
+      const divItem = document.createElement("div");
+      divItem.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
+      list.appendChild(divItem);
+    });
+  }
+
+  // Saat halaman dibuka, tampilkan data lama
+  showCSList();
+</script>
 
   <a href="#" onclick="showSection('operasional'); setActiveLink(this);">Kepala Operasional</a>
   <div id="operasional" class="section">
@@ -283,6 +419,40 @@ Operasional dan laporan harian tim Surprice.
     </div>
     <div id="operasional-list"></div>
   </div>
+<script>
+  // Ambil data tersimpan (kalau ada)
+  let laporanCS = JSON.parse(localStorage.getItem("laporanCS")) || [];
+
+  function addSpreadsheet(div) {
+    const name = document.getElementById(`${div}-name`).value.trim();
+    const url = document.getElementById(`${div}-url`).value.trim();
+
+    if (!name || !url) {
+      alert("Isi dulu nama dan link Google Spreadsheet-nya ya!");
+      return;
+    }
+
+    laporanCS.push({ name, url });
+    localStorage.setItem("laporan Kepala Operasional", JSON.stringify(laporan Kepala Operasional));
+
+    showCSList();
+    document.getElementById(`${div}-name`).value = "";
+    document.getElementById(`${div}-url`).value = "";
+  }
+
+  function showCSList() {
+    const list = document.getElementById("cs-list");
+    list.innerHTML = "";
+    laporanCS.forEach(item => {
+      const divItem = document.createElement("div");
+      divItem.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
+      list.appendChild(divItem);
+    });
+  }
+
+  // Saat halaman dibuka, tampilkan data lama
+  showCSList();
+</script>
 
   <a href="#" onclick="showSection('kebersihan'); setActiveLink(this);">Laporan Kebersihan</a>
 </div>
