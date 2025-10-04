@@ -185,23 +185,7 @@ Operasional dan laporan harian tim Surprice.
 <div class="sidebar">
   <a href="#" onclick="showSection('dashboard'); setActiveLink(this);" class="active">Dashboard</a>
   <a href="#" onclick="showSection('cs'); setActiveLink(this);">Customer Service</a>
-  <a href="#" onclick="showSection('gudang'); setActiveLink(this);">Gudang</a>
-  <a href="#" onclick="showSection('finance'); setActiveLink(this);">Finance</a>
-  <a href="#" onclick="showSection('marketing'); setActiveLink(this);">Marketing</a>
-  <a href="#" onclick="showSection('admin'); setActiveLink(this);">Admin</a>
-  <a href="#" onclick="showSection('operasional'); setActiveLink(this);">Kepala Operasional</a>
-  <a href="#" onclick="showSection('kebersihan'); setActiveLink(this);">Laporan Kebersihan</a>
-</div>
-
-<div class="main">
-  <div id="motivasi"></div>
-
-  <div id="dashboard" class="section active">
-    <h3>📊 Dashboard Semua Divisi</h3>
-    <div id="dashboard-list"></div>
-  </div>
-
-  <div id="cs" class="section">
+ <div id="cs" class="section">
     <h3>Divisi Customer Service</h3>
     <div class="form-input">
       <input type="text" id="cs-name" placeholder="Nama Laporan" />
@@ -210,8 +194,43 @@ Operasional dan laporan harian tim Surprice.
     </div>
     <div id="cs-list"></div>
   </div>
+<script>
+  // Ambil data tersimpan (kalau ada)
+  let laporanCS = JSON.parse(localStorage.getItem("laporanCS")) || [];
 
-  <div id="gudang" class="section">
+  function addSpreadsheet(div) {
+    const name = document.getElementById(`${div}-name`).value.trim();
+    const url = document.getElementById(`${div}-url`).value.trim();
+
+    if (!name || !url) {
+      alert("Isi dulu nama dan link Google Spreadsheet-nya ya!");
+      return;
+    }
+
+    laporanCS.push({ name, url });
+    localStorage.setItem("laporanCS", JSON.stringify(laporanCS));
+
+    showCSList();
+    document.getElementById(`${div}-name`).value = "";
+    document.getElementById(`${div}-url`).value = "";
+  }
+
+  function showCSList() {
+    const list = document.getElementById("cs-list");
+    list.innerHTML = "";
+    laporanCS.forEach(item => {
+      const divItem = document.createElement("div");
+      divItem.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
+      list.appendChild(divItem);
+    });
+  }
+
+  // Saat halaman dibuka, tampilkan data lama
+  showCSList();
+</script>
+
+  <a href="#" onclick="showSection('gudang'); setActiveLink(this);">Gudang</a>
+    <div id="gudang" class="section">
     <h3>Divisi Gudang</h3>
     <div class="form-input">
       <input type="text" id="gudang-name" placeholder="Nama Laporan" />
@@ -221,6 +240,7 @@ Operasional dan laporan harian tim Surprice.
     <div id="gudang-list"></div>
   </div>
 
+  <a href="#" onclick="showSection('finance'); setActiveLink(this);">Finance</a>
   <div id="finance" class="section">
     <h3>Divisi Finance</h3>
     <div class="form-input">
@@ -231,6 +251,7 @@ Operasional dan laporan harian tim Surprice.
     <div id="finance-list"></div>
   </div>
 
+  <a href="#" onclick="showSection('marketing'); setActiveLink(this);">Marketing</a>
   <div id="marketing" class="section">
     <h3>Divisi Marketing</h3>
     <div class="form-input">
@@ -241,6 +262,7 @@ Operasional dan laporan harian tim Surprice.
     <div id="marketing-list"></div>
   </div>
 
+  <a href="#" onclick="showSection('admin'); setActiveLink(this);">Admin</a>
   <div id="admin" class="section">
     <h3>Divisi Admin</h3>
     <div class="form-input">
@@ -251,6 +273,7 @@ Operasional dan laporan harian tim Surprice.
     <div id="admin-list"></div>
   </div>
 
+  <a href="#" onclick="showSection('operasional'); setActiveLink(this);">Kepala Operasional</a>
   <div id="operasional" class="section">
     <h3>Kepala Operasional</h3>
     <div class="form-input">
@@ -259,6 +282,17 @@ Operasional dan laporan harian tim Surprice.
       <button onclick="addSpreadsheet('operasional')">Simpan</button>
     </div>
     <div id="operasional-list"></div>
+  </div>
+
+  <a href="#" onclick="showSection('kebersihan'); setActiveLink(this);">Laporan Kebersihan</a>
+</div>
+
+<div class="main">
+  <div id="motivasi"></div>
+
+  <div id="dashboard" class="section active">
+    <h3>📊 Dashboard Semua Divisi</h3>
+    <div id="dashboard-list"></div>
   </div>
 
   <div id="kebersihan" class="section">
